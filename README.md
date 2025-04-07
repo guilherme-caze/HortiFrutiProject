@@ -1,8 +1,7 @@
-# 🐝 BeeList
+# 🥦 HortiFruti
 
-BeeList é um aplicativo de organização pessoal desenvolvido com React Native, utilizando o Android Studio e o framework Expo Go. 
+HortiFruti é um aplicativo de organização pessoal desenvolvido com React Native, utilizando o Android Studio e o framework Expo Go. 
 
-Nosso objetivo é oferecer uma plataforma intuitiva e funcional para ajudar os usuários a organizarem melhor suas rotinas, tarefas e objetivos diários.
 
 ## 📱 Tecnologias Utilizadas
 
@@ -12,7 +11,7 @@ Nosso objetivo é oferecer uma plataforma intuitiva e funcional para ajudar os u
 
 ## 🧠 Objetivo do Projeto
 
-Desenvolver um aplicativo moderno e acessível para auxiliar na organização da vida pessoal, com funcionalidades que vão desde listas de tarefas e anotações até recursos personalizados para áreas como academia, supermercado e mais.
+Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, selecionar e comprar frutas e verduras frescas com facilidade, promovendo a alimentação saudável e apoiando a agricultura local. 
 
 ## 🚧 Status do Projeto
 
@@ -42,7 +41,7 @@ Siga o passo a passo:
 npx create-expo-app --template
 Somente pressione “y” para confirmação da versão
 Escolha a opção “Navigation Typescript”
-cd .\BeeListProject\
+cd .\HortiFrutiProject\
 npx expo start
 Pressione “a” para abrir sua aplicação no Emulador após realização do building da aplicação
 (Emulador deverá estar aberto).
