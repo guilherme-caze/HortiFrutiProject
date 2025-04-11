@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { FontAwesome } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 
 export default function CadastroScreen() {
@@ -17,6 +18,8 @@ export default function CadastroScreen() {
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [telefone, setTelefone] = useState('');
+
+  const router = useRouter();
 
   const handleCadastro = () => {
     Alert.alert('Cadastro realizado com sucesso!');
@@ -41,13 +44,22 @@ export default function CadastroScreen() {
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.card}>
-          <Image source={require('../../assets/images/seta.png')} style={styles.image} />
+
+        <TouchableOpacity onPress={() => router.push('/')}>
+          <Image
+          source={require('../../assets/images/seta.png')}
+          style={styles.image}
+          />
+        </TouchableOpacity>
+
 
           <Text style={styles.title}>Cadastrar</Text>
 
           <View style={styles.possuiConta}>
             <Text style={styles.texto1}>já possuí uma conta?</Text>
-            <Text style={styles.entrar}>entrar</Text>
+            <TouchableOpacity onPress={() => router.push('/')}>
+              <Text style={styles.entrar}>entrar</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.inputGroup}>

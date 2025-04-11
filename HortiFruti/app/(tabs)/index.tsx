@@ -2,6 +2,8 @@
 
 import { StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { Link } from 'expo-router';
+
 
 export default function TabOneScreen() {
   return (
@@ -28,10 +30,14 @@ export default function TabOneScreen() {
           />
         </TouchableOpacity>
 
-        <Text style={styles.title3}>Login</Text>
-        <Text style={styles.title4}>
-          Não possuí uma conta?<Text style={styles.link}> Criar</Text>
-        </Text>
+      <Text style={styles.title3}>Login</Text>
+      <Text style={styles.title4}>
+          Não possui uma conta?
+        <Link href="/two">
+        <Text style={styles.link}> Criar</Text>
+        </Link>
+      </Text>
+
 
         {/*Campos de login*/}
         <TextInput
@@ -54,8 +60,12 @@ export default function TabOneScreen() {
 
         {/*Recuperação de senha*/}
         <Text style={styles.EsqueceuSenha}>
-          Esqueceu a senha? <Text style={styles.link}>Clique aqui.</Text>
+          Esqueceu a senha?{' '}
+          <Link href="/recuperarSenha">
+          <Text style={styles.link}>Clique aqui.</Text>
+          </Link>
         </Text>
+
       </View>
     </View>
   );
