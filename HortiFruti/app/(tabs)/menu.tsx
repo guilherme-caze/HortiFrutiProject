@@ -32,6 +32,49 @@ export default function TabOneScreen() {
         </TouchableOpacity>
       </View>
 
+       {/* menu */}
+      <View style={styles.funcionalidadesContainer}>
+        <TouchableOpacity style={styles.menuItem}>
+          <Image
+            source={require('../../assets/images/fruta.png')}
+            style={styles.menuImage}
+          />
+          <Text style={styles.menuText}>Frutas</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menuItem}>
+          <Image
+            source={require('../../assets/images/vegetais.png')}
+            style={styles.menuImage}
+          />
+          <Text style={styles.menuText}>Vegetais</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menuItem}>
+          <Image
+            source={require('../../assets/images/tempero.png')}
+            style={styles.menuImage}
+          />
+          <Text style={styles.menuText}>Temperos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menuItem}>
+          <Image
+            source={require('../../assets/images/tempero.png')}
+            style={styles.menuImage}
+          />
+          <Text style={styles.menuText}>Temperos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menuItem}>
+          <Image
+            source={require('../../assets/images/tempero.png')}
+            style={styles.menuImage}
+          />
+          <Text style={styles.menuText}>Temperos</Text>
+        </TouchableOpacity>
+      </View>
+
     </View>
   );
 }
@@ -52,7 +95,7 @@ const styles = StyleSheet.create({
   menuItem: {
     alignItems: 'center',
     backgroundColor: '#fff',
-    width: 120,
+    width: 110,
     height: 100,
     borderRadius: '10%',
   },
@@ -64,5 +107,12 @@ const styles = StyleSheet.create({
   menuText: {
     fontSize: 14,
     fontWeight: '600',
+  },
+  funcionalidadesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    backgroundColor: '#f5f5f5',
   },
 });

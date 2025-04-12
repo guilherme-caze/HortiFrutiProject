@@ -1,12 +1,13 @@
 {/*Tela de login*/}
 
-import { StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
 
 
 export default function TabOneScreen() {
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       {/*Parte superior*/}
       <View style={styles.header}>
@@ -68,9 +69,14 @@ export default function TabOneScreen() {
 
       </View>
     </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
