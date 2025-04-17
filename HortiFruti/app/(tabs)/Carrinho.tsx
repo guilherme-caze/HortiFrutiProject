@@ -17,48 +17,55 @@ export default function ModalScreen() {
       <Text style={styles.title3}>Desmarcar todos os itens</Text>
 
       {/* menu */}
-            <View style={styles.funcionalidadesContainer}>
-              <TouchableOpacity style={styles.funcionalidadesItem}>
-                <Image
-                  source={require('../../assets/images/InicioIcone.png')}
-                  style={styles.funcionalidadesImage}
-                />
-                <Text style={styles.menuText}>Inicio</Text>
-              </TouchableOpacity>
-      
-              <TouchableOpacity style={styles.funcionalidadesItem}>
-                <Image
-                  source={require('../../assets/images/Search.png')}
-                  style={styles.funcionalidadesImage}
-                />
-                <Text style={styles.menuText}>Buscas</Text>
-              </TouchableOpacity>
-      
-              <TouchableOpacity style={styles.funcionalidadesItem}>
-                <Image
-                  source={require('../../assets/images/Heart.png')}
-                  style={styles.funcionalidadesImage}
-                />
-                <Text style={styles.menuText}>Favoritos</Text>
-              </TouchableOpacity>
-      
-              <TouchableOpacity style={styles.funcionalidadesItem}>
-                <Image
-                  source={require('../../assets/images/PedidosIcone01.png')}
-                  style={styles.funcionalidadesImage}
-                />
-                <Text style={styles.menuText}>Pedidos</Text>
-              </TouchableOpacity>
-      
-              <TouchableOpacity style={styles.funcionalidadesItem}>
-                <Image
-                  source={require('../../assets/images/Customer.png')}
-                  style={styles.funcionalidadesImage}
-                />
-                <Text style={styles.menuText}>Perfil</Text>
-              </TouchableOpacity>
-            </View>
-            </View>
+      <View style={styles.funcionalidadesContainer}>
+        {/* Logo da cenoura */}
+        <Image
+          source={require('../../assets/images/CenouraLogo.png')}
+          style={styles.cenouraLogo}
+        />
+
+        {/* Itens do menu */}
+        <TouchableOpacity style={styles.funcionalidadesItem}>
+          <Image
+            source={require('../../assets/images/Home.png')}
+            style={styles.funcionalidadesImage}
+          />
+          <Text style={styles.menuText}>Inicio</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.funcionalidadesItem}>
+          <Image
+            source={require('../../assets/images/Search.png')}
+            style={styles.funcionalidadesImage}
+          />
+          <Text style={styles.menuText}>Buscas</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.funcionalidadesItem}>
+          <Image
+            source={require('../../assets/images/Heart.png')}
+            style={styles.funcionalidadesImage}
+          />
+          <Text style={styles.menuText}>Favoritos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.funcionalidadesItem}>
+          <Image
+            source={require('../../assets/images/ShoppingCart1.png')}
+            style={styles.funcionalidadesImage}
+          />
+          <Text style={styles.menuText}>Pedidos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.funcionalidadesItem}>
+          <Image
+            source={require('../../assets/images/UsuarioIcone.png')}
+            style={styles.funcionalidadesImage}
+          />
+          <Text style={styles.menuText}>Perfil</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
-    paddingBottom: 80, // Espaço reservado para o menu no rodapé
+    paddingBottom: 8, // Espaço reservado para o menu no rodapé
   },
   
   subtotalContainer: {
@@ -132,7 +139,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       width: 100,
       height: 100,
-      borderRadius: 10, // Corrigido de '10%' para 10 (valor numérico)
+      borderRadius: 10, 
     },
     menuImage: {
       width: 50,
@@ -140,8 +147,10 @@ const styles = StyleSheet.create({
       marginBottom: 5,
     },
     menuText: {
-      fontSize: 17,
+      fontSize: 12, 
       fontWeight: '600',
+      color: 'black',
+      textAlign: 'center', 
     },
     promocao: {
       width: '100%'
@@ -153,18 +162,42 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-around',
       paddingHorizontal: 20,
-      paddingVertical: 10,
-      backgroundColor: '#f5f5f5',
-      position: 'absolute', // Posiciona o menu de forma absoluta
-      bottom: 0, // Fixa o menu na parte inferior
-      width: '112%', // Garante que o menu ocupe toda a largura
-      borderTopWidth: 2, // Adiciona uma borda superior para separação
-      borderTopColor: '#9EC852', // Cor da borda superior
+      paddingVertical: 15,
+      backgroundColor: 'white',
+      position: 'absolute', 
+      bottom: 1, 
+      width: '112%', 
+      borderTopWidth: 2, 
+      borderTopColor: '#9EC852', 
     },
-    funcionalidadesImage: {
-      marginBottom: 5,
+    funcionalidadesText: {
+      fontSize: 12,
+      fontWeight: '600',
+      color: 'black',
+      textAlign: 'center',
     },
+
     funcionalidadesItem: {
-      borderRadius: 10,
-    }
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      width: 60, 
+      height: 80, 
+    },
+
+    funcionalidadesImage: {
+      width: 32, 
+      height: 32, 
+      resizeMode: 'contain', 
+      marginBottom: 5, 
+    },
+    cenouraLogo: {
+      width: 35, 
+      height: 35, 
+      resizeMode: 'contain', 
+      position: 'absolute', 
+      top: -20, 
+      left: '55%', 
+      transform: [{ translateX: -20 }],
+      zIndex: 1, 
+    },
 });
