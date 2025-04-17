@@ -3,6 +3,8 @@
 import { ScrollView, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
+import { router } from 'expo-router';
+
 
 
 export default function TabOneScreen() {
@@ -55,7 +57,7 @@ export default function TabOneScreen() {
         />
 
         {/*Botão Entrar*/}
-        <TouchableOpacity style={styles.BotaoLogin}>
+        <TouchableOpacity style={styles.BotaoLogin} onPress={() => router.push('/menu')}>
           <Text style={styles.BotaoLoginText}>Entrar</Text>
         </TouchableOpacity>
 
