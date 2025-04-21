@@ -50,7 +50,7 @@ export default function ModalScreen() {
           <Text style={styles.menuText}>Pedidos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.funcionalidadesItem}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => router.push('/perfil')}>
           <Image
             source={require('../../assets/images/UsuarioIcone.png')}
             style={styles.funcionalidadesImage}
