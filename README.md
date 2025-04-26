@@ -36,8 +36,8 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
 
 ## ⛔ Dependências a serem instaladas
 
-npm install expo-auth-session expo-random
-npm install -g expo-cli
+- npm install expo-auth-session expo-random
+- npm install -g expo-cli
 
 
 ✅ Criar o projeto com o Expo
