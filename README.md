@@ -34,6 +34,12 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
    npm install
    npx expo start
 
+## ⛔ Dependências a serem instaladas
+
+npm install expo-auth-session expo-random
+npm install -g expo-cli
+
+
 ✅ Criar o projeto com o Expo
 
 Siga o passo a passo:
