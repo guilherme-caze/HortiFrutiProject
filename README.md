@@ -2,6 +2,27 @@
 
 HortiFruti é um aplicativo de organização pessoal desenvolvido com React Native, utilizando o Android Studio e o framework Expo Go. 
 
+## Componentes adicionados app1 e app2.
+> Básicos: View, Text, Image, TouchableOpacity, SafeAreaView.
+
+- Navegação: StatusBar, router.push.
+
+- Interativos: FlatList, Animated, TouchableOpacity.
+
+> Funcionalidades
+
+- TipoProduto: Menu de categorias.
+
+- CarrosselPromocao: Carrossel de promoções.
+
+- CarrosselProdutos: Carrossel de produtos.
+
+- BarraInferior: Menu fixo inferior com navegação.
+
+
+# - Figma: https://www.figma.com/design/2J4w5eOfzRw9GFQ2s0B14S/HortiFRUTA?node-id=2263-878&t=8TBBaLGlyFK7A18b-0
+
+# - Canvas: https://www.figma.com/design/oiaqatY9BM0QZfr85BfyAi/Untitled?node-id=0-1&p=f&t=D24fOg8EH0k7DyEm-0
 
 ## 📱 Tecnologias Utilizadas
 
@@ -24,6 +45,7 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
 - Guilherme Rodrigues Cazé
 - Mateus Cerqueira Gonzaga
 - Leandro de Souza Farias
+- Ademar
 
 ## 📌 Como Executar o Projeto
 

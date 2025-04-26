@@ -5,8 +5,8 @@ const { width } = Dimensions.get('window');
 
 const promocoes = [
   require('../../assets/images/tercaDaFruta.png'),
-  require('../../assets/images/tercaDaFruta.png'),
-  require('../../assets/images/tercaDaFruta.png'),
+  require('../../assets/images/quartaDoVegetal.png'),
+  require('../../assets/images/quintaDoTempero.png'),
 ];
 
 export default function CarrosselPromocao() {
