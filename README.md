@@ -45,7 +45,7 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
 - Guilherme Rodrigues Cazé
 - Mateus Cerqueira Gonzaga
 - Leandro de Souza Farias
-- Ademar
+- Ademar Neto Seabra Fonseca 
 
 ## 📌 Como Executar o Projeto
 
