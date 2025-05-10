@@ -2,14 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { router } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ModalScreen() {
   const [activeIcon, setActiveIcon] = useState<string | null>(null);
 
-  // Função para ativar/desativar ícones
-  const handlePress = (iconName: string) => {
+  // Função para ativar ícone e navegar
+  const handlePress = (iconName: string, route: string) => {
     setActiveIcon(iconName);
+    router.push(route); // Continua navegando entre telas corretamente
   };
 
   return (
@@ -20,27 +22,27 @@ export default function ModalScreen() {
         <Image source={require('../../assets/images/CenouraLogo.png')} style={styles.cenouraLogo} />
 
         {/* Itens do menu */}
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('home')}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('home', '/menu')}>
           <Icon name="home" size={32} color={activeIcon === 'home' ? '#ED841C' : '#97C447'} />
           <Text style={styles.menuText}>Início</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('search')}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('search', '/busca')}>
           <Icon name="search" size={32} color={activeIcon === 'search' ? '#ED841C' : '#97C447'} />
           <Text style={styles.menuText}>Buscas</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('heart')}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('heart', '/favoritos')}>
           <Icon name="heart" size={32} color={activeIcon === 'heart' ? '#ED841C' : '#97C447'} />
           <Text style={styles.menuText}>Favoritos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('shopping-cart')}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('shopping-cart', '/pedidos')}>
           <Icon name="shopping-cart" size={32} color={activeIcon === 'shopping-cart' ? '#ED841C' : '#97C447'} />
           <Text style={styles.menuText}>Pedidos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('user')}>
+        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('user', '/perfil')}>
           <Icon name="user" size={32} color={activeIcon === 'user' ? '#ED841C' : '#97C447'} />
           <Text style={styles.menuText}>Perfil</Text>
         </TouchableOpacity>
