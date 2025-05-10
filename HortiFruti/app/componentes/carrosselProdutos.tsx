@@ -2,61 +2,18 @@ import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react
 import { FontAwesome } from '@expo/vector-icons'; // ou 'react-native-vector-icons/FontAwesome'
 
 const produtos = [
-  {
-    id: '1',
-    nome: 'Maçã',
-    preco: 'R$ 4,99/kg',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '2',
-    nome: 'Banana',
-    preco: 'R$ 3,49/kg',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
-  {
-    id: '3',
-    nome: 'Abacaxi',
-    preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
-  },
+  { id: '1', nome: 'Maçã', preco: 'R$ 4,99/kg', imagem: require('../../assets/images/bananas.jpg') },
+  { id: '2', nome: 'Banana', preco: 'R$ 3,49/kg', imagem: require('../../assets/images/bananas.jpg') },
+  { id: '3', nome: 'Abacaxi', preco: 'R$ 6,99/un', imagem: require('../../assets/images/bananas.jpg') },
+  { id: '4', nome: 'Pera', preco: 'R$ 7,99/kg', imagem: require('../../assets/images/bananas.jpg') },
+  { id: '5', nome: 'Uva', preco: 'R$ 12,99/kg', imagem: require('../../assets/images/bananas.jpg') },
 ];
 
 export default function CarrosselProdutos() {
   return (
     <FlatList
       data={produtos}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id} // Garante que cada item tenha um `key` único
       horizontal
       showsHorizontalScrollIndicator={false}
       pagingEnabled

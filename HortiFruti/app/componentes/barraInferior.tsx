@@ -11,9 +11,12 @@ export default function ModalScreen() {
   // Função para ativar ícone e navegar
   const handlePress = (iconName: string, route: string) => {
     setActiveIcon(iconName);
-    router.push(route); // Continua navegando entre telas corretamente
+    
+    requestAnimationFrame(() => {
+      router.push(route);
+    });
   };
-
+  
   return (
     <View style={styles.container}>
       {/* Menu */}
