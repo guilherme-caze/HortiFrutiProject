@@ -17,7 +17,7 @@ export default function TabOneScreen() {
           source={require('../../assets/images/CenouraLogo.png')}
           style={styles.image}
         />
-        <Text style={styles.title1}>Faça login na</Text>
+        <Text style={styles.title1}>Faça login naa</Text>
         <Text style={styles.title1}>sua conta</Text>
         <Text style={styles.title2}>Digite seu e-mail e senha para fazer login</Text>
       </View>

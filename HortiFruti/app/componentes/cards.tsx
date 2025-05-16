@@ -6,7 +6,7 @@ const produtos = [
     id: '1',
     nome: 'Maçã',
     preco: 'R$ 4,99/kg',
-    imagem: require('../../assets/images/bananas.jpg'),
+    imagem: require('../../assets/images/Maçãs.png'),
   },
   {
     id: '2',
@@ -18,25 +18,25 @@ const produtos = [
     id: '3',
     nome: 'Abacaxi',
     preco: 'R$ 6,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
+    imagem: require('../../assets/images/Abacaxi.png'),
   },
   {
     id: '4',
     nome: 'Pera',
     preco: 'R$ 5,99/kg',
-    imagem: require('../../assets/images/bananas.jpg'),
+    imagem: require('../../assets/images/Pera.png'),
   },
   {
     id: '5',
     nome: 'Melancia',
     preco: 'R$ 9,99/un',
-    imagem: require('../../assets/images/bananas.jpg'),
+    imagem: require('../../assets/images/Melancia.png'),
   },
   {
     id: '6',
     nome: 'Laranja',
     preco: 'R$ 2,99/kg',
-    imagem: require('../../assets/images/bananas.jpg'),
+    imagem: require('../../assets/images/Laranja.png'),
   },
 ];
 

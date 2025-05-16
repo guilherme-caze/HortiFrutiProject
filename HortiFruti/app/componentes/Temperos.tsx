@@ -1,23 +1,35 @@
 import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // ou 'react-native-vector-icons/FontAwesome'
+import { FontAwesome } from '@expo/vector-icons';
 
 const produtos = [
-  { id: '1', nome: 'Maçã', preco: 'R$ 4,99/kg', imagem: require('../../assets/images/Maçãs.png') },
-  { id: '2', nome: 'Banana', preco: 'R$ 3,49/kg', imagem: require('../../assets/images/bananas.jpg') },
-  { id: '3', nome: 'Abacaxi', preco: 'R$ 6,99/un', imagem: require('../../assets/images/Abacaxi.png') },
-  { id: '4', nome: 'Pera', preco: 'R$ 7,99/kg', imagem: require('../../assets/images/Pera.png') },
-  { id: '5', nome: 'Uva', preco: 'R$ 12,99/kg', imagem: require('../../assets/images/Uva.png') },
+  {
+    id: '1',
+    nome: 'Alecrim',
+    preco: 'R$ 1,99/un',
+    imagem: require('../../assets/images/Alecrim.png'),
+  },
+  {
+    id: '2',
+    nome: 'Açafrão',
+    preco: 'R$ 2,99/un',
+    imagem: require('../../assets/images/Açafrão.png'),
+  },
+  {
+    id: '3',
+    nome: 'Cominho',
+    preco: 'R$ 0,99/un',
+    imagem: require('../../assets/images/Cominho.png'),
+  },
+  
 ];
 
-export default function CarrosselProdutos() {
+export default function Cards() {
   return (
     <FlatList
       data={produtos}
-      keyExtractor={(item) => item.id} // Garante que cada item tenha um `key` único
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      pagingEnabled
-      contentContainerStyle={{ paddingHorizontal: 16 }}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+      contentContainerStyle={styles.lista}
       renderItem={({ item }) => (
         <View style={styles.card}>
           <Image source={item.imagem} style={styles.imagem} />
@@ -38,10 +50,13 @@ export default function CarrosselProdutos() {
 }
 
 const styles = StyleSheet.create({
+  lista: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+  },
   card: {
-    width: 150,
-    height: 250,
-    marginRight: 16,
+    flex: 1,
+    margin: 8,
     backgroundColor: '#fff',
     borderRadius: 10,
     alignItems: 'center',
@@ -52,6 +67,7 @@ const styles = StyleSheet.create({
   imagem: {
     width: '100%',
     height: 100,
+    borderRadius: 8,
   },
   nome: {
     fontSize: 16,

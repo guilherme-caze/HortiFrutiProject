@@ -2,7 +2,7 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TipoProduto from '@/app/componentes/tipoProduto';
-import Cards from '@/app/componentes/cards';
+import Temperos from '@/app/componentes/Temperos';
 import BarraInferior from '@/app/componentes/barraInferior';
 
 export default function TabOneScreen() {
@@ -12,8 +12,8 @@ export default function TabOneScreen() {
         {/* menu */}
         <TipoProduto />
 
-        {/* cards */}
-        <Cards />
+        {/* Temperos */}
+        <Temperos />
 
         {/* barra inferior */}
         <BarraInferior />
