@@ -1,70 +1,107 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import BarraInferior from '@/app/componentes/barraInferior';
+import CarrinhoItemCard from '@/app/componentes/CarrinhoItemCard';
+
+const produtosExemplo = [ //Teste para os produtos do carrinho, a ideia é usar os do menu quando a pessoa clicar em adicionar
+  {
+    id: '1',
+    nome: 'Abacaxi',
+    preco: 15.5,
+    imagem: require('../../assets/images/Abacaxi.png'),
+  },
+  {
+    id: '2',
+    nome: 'Pera',
+    preco: 5.9,
+    imagem: require('../../assets/images/Pera.png'),
+  },
+  {
+    id: '3',
+    nome: 'Maçã',
+    preco: 3.9,
+    imagem: require('../../assets/images/Maçãs.png'),
+  },
+];
 
 export default function ModalScreen() {
+  const [carrinho, setCarrinho] = useState(produtosExemplo.map(p => ({
+    ...p,
+    quantidade: 1,
+    selecionado: true,
+  })));
+
+  const incrementar = (id: string) => {
+    setCarrinho(carrinho.map(item =>
+      item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
+    ));
+  };
+
+  const decrementar = (id: string) => {
+    setCarrinho(carrinho.map(item =>
+      item.id === id && item.quantidade > 1 ? { ...item, quantidade: item.quantidade - 1 } : item
+    ));
+  };
+
+  const remover = (id: string) => {
+    setCarrinho(carrinho.filter(item => item.id !== id));
+  };
+
+  const selecionar = (id: string) => {
+    setCarrinho(carrinho.map(item =>
+      item.id === id ? { ...item, selecionado: !item.selecionado } : item
+    ));
+  };
+
+  const desmarcarTodos = () => {
+    setCarrinho(carrinho.map(item => ({ ...item, selecionado: false })));
+  };
+
+  const subtotal = carrinho
+    .filter(item => item.selecionado)
+    .reduce((acc, item) => acc + item.preco * item.quantidade, 0);
+
+  const itensSelecionados = carrinho.filter(item => item.selecionado).length;
+
   return (
     <View style={styles.container}>
       <View style={styles.subtotalContainer}>
         <Text style={styles.title1}>Subtotal</Text>
-        <Text style={styles.title2}> R$ 25,30</Text>
+        <Text style={styles.title2}>R$ {subtotal.toFixed(2)}</Text>
       </View>
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+
       <View style={styles.FecharPedidoBotao}>
-      <Text style={styles.FecharPedidoBotaoTexto}>Fechar Pedido (3 itens)</Text>
+        <Text style={styles.FecharPedidoBotaoTexto}>
+          Fechar Pedido ({itensSelecionados} itens)
+        </Text>
       </View>
       <View style={styles.separator} lightColor="#049A2A" darkColor="#4BD37B" />
-      <Text style={styles.title3}>Desmarcar todos os itens</Text>
 
-      {/* menu */}
-      <View style={styles.funcionalidadesContainer}>
-        {/* Logo da cenoura */}
-        <Image
-          source={require('../../assets/images/CenouraLogo.png')}
-          style={styles.cenouraLogo}
-        />
+      <TouchableOpacity onPress={desmarcarTodos}>
+        <Text style={styles.title3}>Desmarcar todos os itens</Text>
+      </TouchableOpacity>
 
-        {/* Itens do menu */}
-        <TouchableOpacity style={styles.funcionalidadesItem}>
-          <Image
-            source={require('../../assets/images/Home.png')}
-            style={styles.funcionalidadesImage}
+      <FlatList
+        data={carrinho}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <CarrinhoItemCard
+            produto={item}
+            quantidade={item.quantidade}
+            selecionado={item.selecionado}
+            onIncrementar={() => incrementar(item.id)}
+            onDecrementar={() => decrementar(item.id)}
+            onRemover={() => remover(item.id)}
+            onSelecionar={() => selecionar(item.id)}
           />
-          <Text style={styles.menuText}>Inicio</Text>
-        </TouchableOpacity>
+        )}
+        style={{ marginTop: 10 }}
+      />
 
-        <TouchableOpacity style={styles.funcionalidadesItem}>
-          <Image
-            source={require('../../assets/images/Search.png')}
-            style={styles.funcionalidadesImage}
-          />
-          <Text style={styles.menuText}>Buscas</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem}>
-          <Image
-            source={require('../../assets/images/Heart.png')}
-            style={styles.funcionalidadesImage}
-          />
-          <Text style={styles.menuText}>Favoritos</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem}>
-          <Image
-            source={require('../../assets/images/ShoppingCart1.png')}
-            style={styles.funcionalidadesImage}
-          />
-          <Text style={styles.menuText}>Pedidos</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem}>
-          <Image
-            source={require('../../assets/images/UsuarioIcone.png')}
-            style={styles.funcionalidadesImage}
-          />
-          <Text style={styles.menuText}>Perfil</Text>
-        </TouchableOpacity>
-      </View>
+      <BarraInferior />
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
   );
 };
@@ -73,8 +110,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 20,
-    paddingBottom: 8, // Espaço reservado para o menu no rodapé
   },
   
   subtotalContainer: {
@@ -86,18 +121,22 @@ const styles = StyleSheet.create({
   
   title1: {
     fontSize: 32,
+    marginLeft: 30,
+    marginTop: 25,
     color: '#ED841C',
     fontWeight: 'bold',
     fontFamily: 'inter',
   },
   title2: {
     fontSize: 20,
+    marginTop: 25,
     color: 'black',
     fontWeight: 'regular',
     fontFamily: 'inter',
   },
   title3: {
     fontSize: 14,
+    marginLeft: 30,
     color: '#049A2A',
     fontWeight: 'regular',
     fontFamily: 'inter',
@@ -106,8 +145,9 @@ const styles = StyleSheet.create({
   separator: {
     marginVertical: 10,
     alignItems: 'center',
+    marginLeft: 10,
     height: 2,
-    width: '100%',
+    width: '95%',
   },
   FecharPedidoBotao: {
     alignItems: 'center',
@@ -116,88 +156,16 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#ED841C',
     borderWidth: 1.5,
+    marginLeft: 30,
     borderRadius: 8,
     paddingVertical: 15,
     paddingHorizontal: 30,
     marginBottom: 20,
-    width: '100%',
+    width: '85%',
     },
     FecharPedidoBotaoTexto: {
       color: 'white',
       fontSize: 16,
       fontWeight: 'medium',
-    },
-    menuContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      paddingHorizontal: 20,
-      paddingVertical: 20,
-      backgroundColor: 'white',
-    },
-    menuItem: {
-      alignItems: 'center',
-      backgroundColor: 'white',
-      width: 100,
-      height: 100,
-      borderRadius: 10, 
-    },
-    menuImage: {
-      width: 50,
-      height: 50,
-      marginBottom: 5,
-    },
-    menuText: {
-      fontSize: 12, 
-      fontWeight: '600',
-      color: 'black',
-      textAlign: 'center', 
-    },
-    promocao: {
-      width: '100%'
-    },
-    promocaoImage: {
-      width: '10%',
-    },
-    funcionalidadesContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      paddingHorizontal: 20,
-      paddingVertical: 15,
-      backgroundColor: 'white',
-      position: 'absolute', 
-      bottom: 1, 
-      width: '112%', 
-      borderTopWidth: 2, 
-      borderTopColor: '#9EC852', 
-    },
-    funcionalidadesText: {
-      fontSize: 12,
-      fontWeight: '600',
-      color: 'black',
-      textAlign: 'center',
-    },
-
-    funcionalidadesItem: {
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      width: 60, 
-      height: 80, 
-    },
-
-    funcionalidadesImage: {
-      width: 32, 
-      height: 32, 
-      resizeMode: 'contain', 
-      marginBottom: 5, 
-    },
-    cenouraLogo: {
-      width: 35, 
-      height: 35, 
-      resizeMode: 'contain', 
-      position: 'absolute', 
-      top: -20, 
-      left: '55%', 
-      transform: [{ translateX: -20 }],
-      zIndex: 1, 
     },
 });

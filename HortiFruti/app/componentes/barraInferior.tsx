@@ -1,22 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { router } from 'expo-router';
+import { router, usePathname } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ModalScreen() {
-  const [activeIcon, setActiveIcon] = useState<string | null>(null);
+  const pathname = usePathname();
 
-  // Função para ativar ícone e navegar
-  const handlePress = (iconName: string, route: string) => {
-    setActiveIcon(iconName);
-    
+  // Função para navegar
+  const handlePress = (route: string) => {
     requestAnimationFrame(() => {
       router.push(route);
     });
   };
-  
+
+  // Mapeamento de rotas para ícones
+  const menuItems = [
+    { icon: 'home', label: 'Início', route: '/menu' },
+    { icon: 'search', label: 'Buscas', route: '/busca' },
+    { icon: 'heart', label: 'Favoritos', route: '/favoritos' },
+    { icon: 'shopping-cart', label: 'Pedidos', route: '/Carrinho' },
+    { icon: 'user', label: 'Perfil', route: '/Perfil' },
+  ];
+
   return (
     <View style={styles.container}>
       {/* Menu */}
@@ -25,30 +31,20 @@ export default function ModalScreen() {
         <Image source={require('../../assets/images/CenouraLogo.png')} style={styles.cenouraLogo} />
 
         {/* Itens do menu */}
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('home', '/menu')}>
-          <Icon name="home" size={32} color={activeIcon === 'home' ? '#ED841C' : '#97C447'} />
-          <Text style={styles.menuText}>Início</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('search', '/busca')}>
-          <Icon name="search" size={32} color={activeIcon === 'search' ? '#ED841C' : '#97C447'} />
-          <Text style={styles.menuText}>Buscas</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('heart', '/favoritos')}>
-          <Icon name="heart" size={32} color={activeIcon === 'heart' ? '#ED841C' : '#97C447'} />
-          <Text style={styles.menuText}>Favoritos</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('shopping-cart', '/pedidos')}>
-          <Icon name="shopping-cart" size={32} color={activeIcon === 'shopping-cart' ? '#ED841C' : '#97C447'} />
-          <Text style={styles.menuText}>Pedidos</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.funcionalidadesItem} onPress={() => handlePress('user', '/perfil')}>
-          <Icon name="user" size={32} color={activeIcon === 'user' ? '#ED841C' : '#97C447'} />
-          <Text style={styles.menuText}>Perfil</Text>
-        </TouchableOpacity>
+        {menuItems.map(item => (
+          <TouchableOpacity
+            key={item.icon}
+            style={styles.funcionalidadesItem}
+            onPress={() => handlePress(item.route)}
+          >
+            <Icon
+              name={item.icon}
+              size={32}
+              color={pathname === item.route ? '#ED841C' : '#97C447'}
+            />
+            <Text style={styles.menuText}>{item.label}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );
@@ -86,8 +82,8 @@ const styles = StyleSheet.create({
     height: 60,
   },
   cenouraLogo: {
-    width: 35,
-    height: 35,
+    width: 30,
+    height: 30,
     resizeMode: 'contain',
     position: 'absolute',
     top: -20,
