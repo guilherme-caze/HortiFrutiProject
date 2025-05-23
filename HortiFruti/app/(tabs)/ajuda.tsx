@@ -3,121 +3,111 @@ import { Text, View } from '@/components/Themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BarraInferior from '@/app/componentes/barraInferior';
 import { Feather } from '@expo/vector-icons';
-import { router } from 'expo-router';
 
 export default function TabOneScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
+
       <View style={styles.container}>
 
-        {/* nome de usuário */}
         <View style={styles.itemSimple}>
+            <Text style={styles.itemTitleLarge}>Conversas</Text>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/conversaLaranja.png')}
             style={styles.itemImageLarge}
-          />
-          <Text style={styles.itemTitleLarge}>Nome de usuário</Text>
+           />
         </View>
 
         {/* conversas */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/conversa.png')}
+            source={require('../../assets/images/perfil.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Conversas</Text>
-            <Text style={styles.itemSubtitle}>Meu histórico de conversas</Text>
-          </View>
-          <TouchableOpacity onPress={() => router.push('/conversas')} style={styles.setaButton}>
-            <Feather name="chevron-right" size={28} color="#aaa" />
-          </TouchableOpacity>
-
-        </View>
-
-        {/* notificações */}
-        <View style={styles.itemContainer}>
-          <Image
-            source={require('../../assets/images/notificacoes.png')}
-            style={styles.itemImage}
-          />
-          <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Notificações</Text>
-            <Text style={styles.itemSubtitle}>Minha central de notificações</Text>
-          </View>
-          <TouchableOpacity onPress={() => router.push('/notificacoes')} style={styles.setaButton}>
-            <Feather name="chevron-right" size={28} color="#aaa" />
-          </TouchableOpacity>
-        </View>
-
-        {/* dados da conta */}
-        <View style={styles.itemContainer}>
-          <Image
-            source={require('../../assets/images/dados.png')}
-            style={styles.itemImage}
-          />
-          <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Dados da conta</Text>
-            <Text style={styles.itemSubtitle}>Minhas informações da conta</Text>
-          </View>
-          <TouchableOpacity onPress={() => router.push('/dadosUsuario')} style={styles.setaButton}>
-            <Feather name="chevron-right" size={28} color="#aaa" />
-          </TouchableOpacity>
-        </View>
-
-        {/* pagamentos */}
-        <View style={styles.itemContainer}>
-          <Image
-            source={require('../../assets/images/pagamento.png')}
-            style={styles.itemImage}
-          />
-          <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Pagamentos</Text>
-            <Text style={styles.itemSubtitle}>Meus saldos e cartões</Text>
-          </View>
-          <TouchableOpacity onPress={() => router.push('/saldo')} style={styles.setaButton}>
-            <Feather name="chevron-right" size={28} color="#aaa" />
-          </TouchableOpacity>
-        </View>
-
-        {/* favoritos */}
-        <View style={styles.itemContainer}>
-          <Image
-            source={require('../../assets/images/coracaoBlack.png')}
-            style={styles.itemImage}
-          />
-          <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Favoritos</Text>
-            <Text style={styles.itemSubtitle}>Meus favoritos</Text>
+            <Text style={styles.itemTitle}>Banca da fruta</Text>
+            <Text style={styles.itemSubtitle}>Seu pedido está a caminho</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* endereços */}
+        {/* notificações */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/enderecoBlack.png')}
+            source={require('../../assets/images/perfil.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Endereços</Text>
-            <Text style={styles.itemSubtitle}>Meus endereços de entrega</Text>
+            <Text style={styles.itemTitle}>Mercado bom tempeiro</Text>
+            <Text style={styles.itemSubtitle}>Seu pedido está a caminho</Text>
           </View>
-          <TouchableOpacity onPress={() => router.push('/enderecos')} style={styles.setaButton}>
+          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* ajuda */} 
-        <View style={styles.itemSimple}>
+        {/* conversa */}
+        <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/ajuda.png')}
-            style={styles.itemImageLarge}
+            source={require('../../assets/images/perfil.png')}
+            style={styles.itemImage}
           />
-          <Text style={styles.itemTitleLarge}>Ajuda</Text>
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>Hortifruti do jorge</Text>
+            <Text style={styles.itemSubtitle}>Poderia avaliar o nosso atendimento</Text>
+          </View>
+          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
+            <Feather name="chevron-right" size={28} color="#aaa" />
+          </TouchableOpacity>
         </View>
+
+        {/* conversa */}
+        <View style={styles.itemContainer}>
+          <Image
+            source={require('../../assets/images/perfil.png')}
+            style={styles.itemImage}
+          />
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>Atacado da fruta</Text>
+            <Text style={styles.itemSubtitle}>O pagamento será no dinheiro?</Text>
+          </View>
+          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
+            <Feather name="chevron-right" size={28} color="#aaa" />
+          </TouchableOpacity>
+        </View>
+
+        {/* conversa */}
+        <View style={styles.itemContainer}>
+          <Image
+            source={require('../../assets/images/perfil.png')}
+            style={styles.itemImage}
+          />
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>(motoboi) Elias</Text>
+            <Text style={styles.itemSubtitle}>Olá, cheguei com seu pedido!</Text>
+          </View>
+          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
+            <Feather name="chevron-right" size={28} color="#aaa" />
+          </TouchableOpacity>
+        </View>
+
+        {/* conversa */}
+        <View style={styles.itemContainer}>
+          <Image
+            source={require('../../assets/images/perfil.png')}
+            style={styles.itemImage}
+          />
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>(motoboi) Alfredo</Text>
+            <Text style={styles.itemSubtitle}>Obrigado pela gorjeta</Text>
+          </View>
+          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
+            <Feather name="chevron-right" size={28} color="#aaa" />
+          </TouchableOpacity>
+        </View>
+
 
         {/* barra inferior */}
         <BarraInferior />
@@ -130,22 +120,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   
   },
   itemSimple: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     margin: 16,
     backgroundColor: '#fff',
   },
   itemImageLarge: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
+    width: 50,
+    height: 50,
   },
   itemTitleLarge: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: '600',
+    marginRight: 10,
+    color: '#FFA500',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -155,8 +146,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   itemImage: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
     marginRight: 10,
     resizeMode: 'contain',
   },

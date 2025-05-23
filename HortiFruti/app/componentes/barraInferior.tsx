@@ -20,7 +20,7 @@ export default function ModalScreen() {
     { icon: 'search', label: 'Buscas', route: '/busca' },
     { icon: 'heart', label: 'Favoritos', route: '/favoritos' },
     { icon: 'shopping-cart', label: 'Pedidos', route: '/Carrinho' },
-    { icon: 'user', label: 'Perfil', route: '/Perfil' },
+    { icon: 'user', label: 'perfil', route: '/perfil' },
   ];
 
   return (
