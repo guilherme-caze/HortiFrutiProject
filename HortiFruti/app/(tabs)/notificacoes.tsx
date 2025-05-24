@@ -10,7 +10,7 @@ export default function TabOneScreen() {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
 
-        {/* ajuda */} 
+        
         <View style={styles.itemSimple}>
 
           <TouchableOpacity onPress={() => router.push('/perfil')} >

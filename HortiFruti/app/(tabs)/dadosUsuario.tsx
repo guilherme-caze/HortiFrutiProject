@@ -2,6 +2,7 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BarraInferior from '@/app/componentes/barraInferior';
+import { router } from 'expo-router';
 
 export default function TabOneScreen() {
   return (
@@ -10,6 +11,12 @@ export default function TabOneScreen() {
         
         {/* Título com ícone */}
         <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.push('/perfil')} style={styles.setaButton}>
+            <Image
+              source={require('../../assets/images/voltar.png')}
+              style={styles.itemImageLarge}
+            />
+          </TouchableOpacity>
           <Text style={styles.headerText}>Meus dados</Text>
           <Image
             source={require('../../assets/images/dadosLaranja.png')}
@@ -152,6 +159,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 30,
     marginBottom: 20,
+  },
+  setaButton: {
+    borderRadius: 8,
   },
   buttonText: {
     color: '#fff',

@@ -32,7 +32,6 @@ export default function TabOneScreen() {
           <TouchableOpacity onPress={() => router.push('/conversas')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
-
         </View>
 
         {/* notificações */}
@@ -110,13 +109,19 @@ export default function TabOneScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* ajuda */} 
-        <View style={styles.itemSimple}>
+        {/* ajuda */}
+        <View style={styles.itemContainer}>
           <Image
             source={require('../../assets/images/ajuda.png')}
-            style={styles.itemImageLarge}
+            style={styles.itemImage}
           />
-          <Text style={styles.itemTitleLarge}>Ajuda</Text>
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>Ajuda</Text>
+            <Text style={styles.itemSubtitle}>Precisa de suporte?</Text>
+          </View>
+          <TouchableOpacity onPress={() => router.push('/ajuda')} style={styles.setaButton}>
+            <Feather name="chevron-right" size={28} color="#aaa" />
+          </TouchableOpacity>
         </View>
 
         {/* barra inferior */}
@@ -130,7 +135,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   
   },
   itemSimple: {
     flexDirection: 'row',

@@ -3,118 +3,105 @@ import { Text, View } from '@/components/Themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BarraInferior from '@/app/componentes/barraInferior';
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 export default function TabOneScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
       <View style={styles.container}>
 
+        {/* Cabeçalho com botão voltar e título */}
         <View style={styles.itemSimple}>
-            <Text style={styles.itemTitleLarge}>Conversas</Text>
+        <TouchableOpacity onPress={() => router.push('/perfil')} style={styles.setaButton}>
+            <Image
+              source={require('../../assets/images/voltar.png')}
+              style={styles.itemImageLarge}
+            />
+          </TouchableOpacity>
           <Image
-            source={require('../../assets/images/conversaLaranja.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImageLarge}
-           />
+          />
+          <Text style={styles.itemTitleLarge}>Ajuda</Text>
         </View>
 
-        {/* conversas */}
+        {/* Caso 1 */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Banca da fruta</Text>
-            <Text style={styles.itemSubtitle}>Seu pedido está a caminho</Text>
+            <Text style={styles.itemTitle}>Seu pedido não foi entregue</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* notificações */}
+        {/* Caso 2 */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Mercado bom tempeiro</Text>
-            <Text style={styles.itemSubtitle}>Seu pedido está a caminho</Text>
+            <Text style={styles.itemTitle}>Pedido errado</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* conversa */}
+        {/* Caso 3 */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Hortifruti do jorge</Text>
-            <Text style={styles.itemSubtitle}>Poderia avaliar o nosso atendimento</Text>
+            <Text style={styles.itemTitle}>Pedido "alterado"</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* conversa */}
+        {/* Caso 4 */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>Atacado da fruta</Text>
-            <Text style={styles.itemSubtitle}>O pagamento será no dinheiro?</Text>
+            <Text style={styles.itemTitle}>Não consigo falar com a loja</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* conversa */}
+        {/* Caso 5 */}
         <View style={styles.itemContainer}>
           <Image
-            source={require('../../assets/images/perfil.png')}
+            source={require('../../assets/images/ajuda.png')}
             style={styles.itemImage}
           />
           <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>(motoboi) Elias</Text>
-            <Text style={styles.itemSubtitle}>Olá, cheguei com seu pedido!</Text>
+            <Text style={styles.itemTitle}>Pedido de reembolso</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
             <Feather name="chevron-right" size={28} color="#aaa" />
           </TouchableOpacity>
         </View>
 
-        {/* conversa */}
-        <View style={styles.itemContainer}>
-          <Image
-            source={require('../../assets/images/perfil.png')}
-            style={styles.itemImage}
-          />
-          <View style={styles.itemTextContainer}>
-            <Text style={styles.itemTitle}>(motoboi) Alfredo</Text>
-            <Text style={styles.itemSubtitle}>Obrigado pela gorjeta</Text>
-          </View>
-          <TouchableOpacity onPress={() => console.log('Seta pressionada')} style={styles.setaButton}>
-            <Feather name="chevron-right" size={28} color="#aaa" />
-          </TouchableOpacity>
-        </View>
-
-
-        {/* barra inferior */}
+        {/* Barra inferior */}
         <BarraInferior />
       </View>
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -124,18 +111,17 @@ const styles = StyleSheet.create({
   itemSimple: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     margin: 16,
     backgroundColor: '#fff',
   },
   itemImageLarge: {
     width: 50,
     height: 50,
+    marginRight: 10,
   },
   itemTitleLarge: {
     fontSize: 30,
     fontWeight: '600',
-    marginRight: 10,
     color: '#FFA500',
   },
   itemContainer: {
@@ -146,8 +132,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   itemImage: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     marginRight: 10,
     resizeMode: 'contain',
   },

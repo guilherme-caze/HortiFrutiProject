@@ -3,6 +3,7 @@ import { Text, View } from '@/components/Themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BarraInferior from '@/app/componentes/barraInferior';
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 export default function TabOneScreen() {
   return (
@@ -11,6 +12,12 @@ export default function TabOneScreen() {
       <View style={styles.container}>
 
         <View style={styles.itemSimple}>
+        <TouchableOpacity onPress={() => router.push('/perfil')} style={styles.setaButton}>
+            <Image
+              source={require('../../assets/images/voltar.png')}
+              style={styles.itemImageLarge}
+            />
+          </TouchableOpacity>
             <Text style={styles.itemTitleLarge}>Conversas</Text>
           <Image
             source={require('../../assets/images/conversaLaranja.png')}
