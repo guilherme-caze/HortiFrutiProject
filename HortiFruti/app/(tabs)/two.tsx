@@ -10,14 +10,15 @@ import {
 } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { FontAwesome } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
 import { useRouter } from 'expo-router';
-
 
 export default function CadastroScreen() {
   const [dataNascimento, setDataNascimento] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [telefone, setTelefone] = useState('');
+  const [estado, setEstado] = useState('');
 
   const router = useRouter();
 
@@ -44,14 +45,12 @@ export default function CadastroScreen() {
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.card}>
-
-        <TouchableOpacity onPress={() => router.push('/')}>
-          <Image
-          source={require('../../assets/images/seta.png')}
-          style={styles.image}
-          />
-        </TouchableOpacity>
-
+          <TouchableOpacity onPress={() => router.push('/')}>
+            <Image
+              source={require('../../assets/images/seta.png')}
+              style={styles.image}
+            />
+          </TouchableOpacity>
 
           <Text style={styles.title}>Cadastrar</Text>
 
@@ -75,16 +74,16 @@ export default function CadastroScreen() {
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Data de nascimento</Text>
             <RNView style={styles.inputIconContainer}>
-            <TextInput
-            style={styles.inputWithIcon}
-            value={dataNascimento}
-            onChangeText={(text) => setDataNascimento(formatarData(text))}
-            keyboardType="numeric"
-            maxLength={10}
-            placeholder="DD/MM/AAAA"
-           />
-          <FontAwesome name="calendar" size={22} color="#999" style={styles.icon} />
-          </RNView>
+              <TextInput
+                style={styles.inputWithIcon}
+                value={dataNascimento}
+                onChangeText={(text) => setDataNascimento(formatarData(text))}
+                keyboardType="numeric"
+                maxLength={10}
+                placeholder="DD/MM/AAAA"
+              />
+              <FontAwesome name="calendar" size={22} color="#999" style={styles.icon} />
+            </RNView>
           </View>
 
           <View style={styles.inputGroup}>
@@ -97,6 +96,47 @@ export default function CadastroScreen() {
               maxLength={15}
               placeholder="(XX) XXXXX-XXXX"
             />
+          </View>
+
+          {/* NOVO CAMPO DE ESTADO */}
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Estado</Text>
+            <RNView style={styles.pickerContainer}>
+              <Picker
+                selectedValue={estado}
+                onValueChange={(itemValue) => setEstado(itemValue)}
+                style={styles.picker}
+              >
+                <Picker.Item label="Selecione um estado" value="" />
+                <Picker.Item label="Acre (AC)" value="AC" />
+                <Picker.Item label="Alagoas (AL)" value="AL" />
+                <Picker.Item label="Amapá (AP)" value="AP" />
+                <Picker.Item label="Amazonas (AM)" value="AM" />
+                <Picker.Item label="Bahia (BA)" value="BA" />
+                <Picker.Item label="Ceará (CE)" value="CE" />
+                <Picker.Item label="Distrito Federal (DF)" value="DF" />
+                <Picker.Item label="Espírito Santo (ES)" value="ES" />
+                <Picker.Item label="Goiás (GO)" value="GO" />
+                <Picker.Item label="Maranhão (MA)" value="MA" />
+                <Picker.Item label="Mato Grosso (MT)" value="MT" />
+                <Picker.Item label="Mato Grosso do Sul (MS)" value="MS" />
+                <Picker.Item label="Minas Gerais (MG)" value="MG" />
+                <Picker.Item label="Pará (PA)" value="PA" />
+                <Picker.Item label="Paraíba (PB)" value="PB" />
+                <Picker.Item label="Paraná (PR)" value="PR" />
+                <Picker.Item label="Pernambuco (PE)" value="PE" />
+                <Picker.Item label="Piauí (PI)" value="PI" />
+                <Picker.Item label="Rio de Janeiro (RJ)" value="RJ" />
+                <Picker.Item label="Rio Grande do Norte (RN)" value="RN" />
+                <Picker.Item label="Rio Grande do Sul (RS)" value="RS" />
+                <Picker.Item label="Rondônia (RO)" value="RO" />
+                <Picker.Item label="Roraima (RR)" value="RR" />
+                <Picker.Item label="Santa Catarina (SC)" value="SC" />
+                <Picker.Item label="São Paulo (SP)" value="SP" />
+                <Picker.Item label="Sergipe (SE)" value="SE" />
+                <Picker.Item label="Tocantins (TO)" value="TO" />
+              </Picker>
+            </RNView>
           </View>
 
           <View style={styles.inputGroup}>
@@ -115,7 +155,7 @@ export default function CadastroScreen() {
                 placeholder="Digite sua senha"
               />
               <TouchableOpacity onPress={() => setMostrarSenha(!mostrarSenha)}>
-                <Text style={styles.toggleSenha}>{mostrarSenha ? '🙈' : '👁️'}</Text>
+                <Text style={styles.toggleSenha}>{mostrarSenha ? '🙈' : '🙉'}</Text>
               </TouchableOpacity>
             </RNView>
           </View>
@@ -172,7 +212,6 @@ const styles = StyleSheet.create({
   entrar: {
     fontSize: 20,
     color: '#049A2A',
-    textDecorationLine: 'none',
   },
   inputGroup: {
     marginBottom: 15,
@@ -200,14 +239,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     height: 50,
-  }, 
+  },
   inputWithIcon: {
     flex: 1,
     height: 50,
   },
   icon: {
     marginLeft: 10,
-  },  
+  },
+  pickerContainer: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+  },
+  picker: {
+    height: 50,
+    width: '100%',
+  },
   senhaContainer: {
     flexDirection: 'row',
     alignItems: 'center',
