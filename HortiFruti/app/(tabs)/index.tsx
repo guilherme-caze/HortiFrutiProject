@@ -5,10 +5,9 @@ import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
 import { router } from 'expo-router';
 
-
-
 export default function TabOneScreen() {
   return (
+
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       {/*Parte superior*/}
@@ -25,7 +24,7 @@ export default function TabOneScreen() {
       {/*Parte branca do Login (Card)*/}
       <View style={styles.card}>
         {/* Botão do Google */}
-        <TouchableOpacity style={styles.BotaoGoogle}>
+        <TouchableOpacity style={styles.BotaoGoogle} onPress={() => router.push('/GoogleLoginScreen')}>
           <Text style={styles.BotaoGoogleTexto}>Entrar com Google</Text>
           <Image
             source={require('../../assets/images/GoogleIcon.png')}
