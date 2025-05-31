@@ -1,6 +1,7 @@
 import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
+
 const produtos = [
   {
     id: '1',
