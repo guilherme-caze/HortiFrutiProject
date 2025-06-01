@@ -20,7 +20,7 @@ export default function TabOneScreen() {
         {/* saldo do usuario melhorado */}
         <View style={styles.saldoContainer}>
           <Text style={styles.saldoTexto}>Endereço principal:</Text>
-          <Text style={styles.cartao}>casa do carai</Text>
+          <Text style={styles.cartao}>casa da mãe Joana</Text>
 
           <TouchableOpacity
             style={styles.buttonSaldo}
