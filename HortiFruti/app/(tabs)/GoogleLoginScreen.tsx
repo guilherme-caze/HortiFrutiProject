@@ -1,12 +1,34 @@
-// app/GoogleLoginScreen.tsx
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import { router } from 'expo-router';
+import { useState } from 'react';
 
 export default function GoogleLoginScreen() {
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
+
+  // Simulação de autenticação
+  function autenticar() {
+    if (!senha) {
+      setErro('Digite a senha.');
+      return;
+    }
+    // Aqui você pode integrar com backend ou autenticação Google real
+    if (senha === '123456') {
+      setErro('');
+      router.push('/menu');
+    } else {
+      setErro('Senha incorreta.');
+    }
+  }
+
+  function recuperarSenha() {
+    Alert.alert('Recuperação de senha', 'Função de recuperação de senha não implementada.');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Google</Text>
-      <Text style={styles.greeting}>Hi User</Text>
+      <Text style={styles.greeting}>Olá, Usuário</Text>
 
       <View style={styles.emailRow}>
         <Image
@@ -18,17 +40,23 @@ export default function GoogleLoginScreen() {
 
       <TextInput
         style={styles.input}
-        placeholder="Enter password"
+        placeholder="Digite sua senha"
         secureTextEntry
         placeholderTextColor="#777"
+        value={senha}
+        onChangeText={setSenha}
+        accessibilityLabel="Campo de senha"
+        autoCapitalize="none"
       />
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => router.push('/menu')}>
-        <Text style={styles.nextText}>Next</Text>
+      {erro ? <Text style={styles.erro}>{erro}</Text> : null}
+
+      <TouchableOpacity style={styles.nextButton} onPress={autenticar} activeOpacity={0.8}>
+        <Text style={styles.nextText}>Entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Text style={styles.forgot}>Forgot password?</Text>
+      <TouchableOpacity onPress={recuperarSenha} accessibilityRole="button">
+        <Text style={styles.forgot}>Esqueceu a senha?</Text>
       </TouchableOpacity>
     </View>
   );
@@ -69,7 +97,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 15,
     borderRadius: 5,
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  erro: {
+    color: '#d32f2f',
+    marginBottom: 10,
+    fontSize: 14,
   },
   nextButton: {
     backgroundColor: '#1a73e8',
@@ -84,5 +117,6 @@ const styles = StyleSheet.create({
   forgot: {
     marginTop: 20,
     color: '#1a73e8',
+    textAlign: 'center',
   },
 });
