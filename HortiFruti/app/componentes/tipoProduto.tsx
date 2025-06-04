@@ -1,19 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { InteractionManager } from 'react-native';
 import {
   Text,
-  FlatList,
   Image,
   Dimensions,
   StyleSheet,
   TouchableOpacity,
   View,
   Animated,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
   AccessibilityInfo,
 } from 'react-native';
-import { router } from 'expo-router';
+import { router, usePathname } from 'expo-router'; // IMPORTANTE
 
 const { width } = Dimensions.get('window');
 
@@ -39,23 +36,14 @@ const categorias = [
 ];
 
 export default function TipoProduto() {
-  const [indexAtivo, setIndexAtivo] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
-  const [selecionado, setSelecionado] = useState<string | null>(null);
   const [animSelecionado] = useState(
     categorias.map(() => new Animated.Value(1))
   );
-
-  useEffect(() => {
-    if (selecionado) {
-      InteractionManager.runAfterInteractions(() => {
-        router.push({ pathname: `/${selecionado}`, params: { tipo: selecionado } });
-      });
-    }
-  }, [selecionado]);
+  const pathname = usePathname(); // PEGA A ROTA ATUAL
 
   // Animação ao selecionar
-  const animarSelecao = (idx: number) => {
+  const animarSelecao = (idx: number, callback?: () => void) => {
     Animated.sequence([
       Animated.timing(animSelecionado[idx], {
         toValue: 1.1,
@@ -67,20 +55,26 @@ export default function TipoProduto() {
         duration: 120,
         useNativeDriver: true,
       }),
-    ]).start();
+    ]).start(() => {
+      if (callback) callback();
+    });
   };
 
   const handleSelecionar = (key: string, idx: number) => {
-    setSelecionado(key);
-    animarSelecao(idx);
     AccessibilityInfo.announceForAccessibility(`Categoria ${categorias[idx].label} selecionada`);
+    animarSelecao(idx, () => {
+      InteractionManager.runAfterInteractions(() => {
+        router.push({ pathname: `/${key}`, params: { tipo: key } });
+      });
+    });
   };
 
   return (
     <View>
       <View style={styles.menuContainer}>
         {categorias.map((cat, idx) => {
-          const isSelected = selecionado === cat.key;
+          // Checa se a rota atual corresponde à categoria
+          const isSelected = pathname === `/${cat.key}`;
           return (
             <Animated.View
               key={cat.key}
