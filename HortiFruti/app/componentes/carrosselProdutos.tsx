@@ -13,7 +13,7 @@ const produtos = [
 const styles = StyleSheet.create({
   carrosselLista: {
     paddingHorizontal: 10,
-    paddingBottom: 0, 
+    paddingBottom: 40, 
   },
 });
 
