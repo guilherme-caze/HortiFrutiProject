@@ -106,7 +106,7 @@ export default function Cards() {
 const styles = StyleSheet.create({
   lista: {
     paddingHorizontal: 10,
-    paddingBottom: 20,
+    paddingBottom: 80,
   },
   card: {
     flex: 1,

@@ -1,5 +1,6 @@
-import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // ou 'react-native-vector-icons/FontAwesome'
+import { FlatList, Alert, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { ProdutoCard } from './cards';
 
 const produtos = [
   { id: '1', nome: 'Maçã', preco: 'R$ 4,99/kg', imagem: require('../../assets/images/Maçãs.png') },
@@ -9,77 +10,43 @@ const produtos = [
   { id: '5', nome: 'Uva', preco: 'R$ 12,99/kg', imagem: require('../../assets/images/Uva.png') },
 ];
 
+const styles = StyleSheet.create({
+  carrosselLista: {
+    paddingHorizontal: 10,
+    paddingBottom: 0, 
+  },
+});
+
 export default function CarrosselProdutos() {
+  const [favoritos, setFavoritos] = useState<string[]>([]);
+
+  function handleAdicionar(item: any) {
+    Alert.alert('Adicionado', `${item.nome} foi adicionado ao carrinho!`);
+  }
+
+  function handleFavoritar(id: string) {
+    setFavoritos((prev) =>
+      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
+    );
+  }
+
   return (
     <FlatList
       data={produtos}
-      keyExtractor={(item) => item.id} // Garante que cada item tenha um `key` único
+      keyExtractor={(item) => item.id}
       horizontal
       showsHorizontalScrollIndicator={false}
       pagingEnabled
-      contentContainerStyle={{ paddingHorizontal: 16 }}
+      contentContainerStyle={styles.carrosselLista}
       renderItem={({ item }) => (
-        <View style={styles.card}>
-          <Image source={item.imagem} style={styles.imagem} />
-          <Text style={styles.nome}>{item.nome}</Text>
-          <Text style={styles.preco}>{item.preco}</Text>
-          <View style={styles.botoesContainer}>
-            <TouchableOpacity style={styles.botao}>
-              <Text style={styles.botaoTexto}>Adicionar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.coracao}>
-              <FontAwesome name="heart-o" size={25} color="#97C447" />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ProdutoCard
+          item={item}
+          onAdicionar={handleAdicionar}
+          favorito={favoritos.includes(item.id)}
+          onFavoritar={handleFavoritar}
+          carrossel={true}
+        />
       )}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    width: 150,
-    height: 250,
-    marginRight: 16,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    alignItems: 'center',
-    padding: 10,
-    elevation: 4,
-    justifyContent: 'space-between',
-  },
-  imagem: {
-    width: '100%',
-    height: 100,
-  },
-  nome: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  preco: {
-    fontSize: 14,
-    color: '#444',
-    marginTop: 2,
-  },
-  botoesContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  botao: {
-    backgroundColor: '#FFA500',
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-  },
-  botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  coracao: {
-    marginLeft: 10,
-  },
-});

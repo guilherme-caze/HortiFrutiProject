@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { FlatList, Image, Dimensions, StyleSheet, TouchableOpacity, View, Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { router } from 'expo-router'; 
 
 const { width } = Dimensions.get('window');
 
@@ -24,6 +25,13 @@ export default function CarrosselPromocao() {
     }
   );
 
+  // Função para navegar conforme o banner clicado
+  const handleBannerPress = (index: number) => {
+    if (index === 0) router.push('/frutas');
+    else if (index === 1) router.push('/vegetais');
+    else if (index === 2) router.push('/temperos');
+  };
+
   return (
     <View>
       <Animated.FlatList
@@ -33,8 +41,8 @@ export default function CarrosselPromocao() {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onScroll={onScroll}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.promocao}>
+        renderItem={({ item, index }) => (
+          <TouchableOpacity style={styles.promocao} onPress={() => handleBannerPress(index)}>
             <Image source={item} style={styles.promocaoImage} />
           </TouchableOpacity>
         )}
