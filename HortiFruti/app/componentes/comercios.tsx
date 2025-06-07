@@ -28,7 +28,7 @@ export default function Cards() {
           <Text style={styles.nome}>{item.nome}</Text>
           <View style={styles.botoesContainer}>
             <TouchableOpacity style={styles.botao}>
-              <Text style={styles.botaoTexto}>Visitar</Text>
+              <Text style={styles.botaoTexto}>Viisitar</Text>
             </TouchableOpacity>
           </View>
         </View>
