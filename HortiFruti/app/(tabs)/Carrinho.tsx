@@ -101,7 +101,7 @@ export default function ModalScreen() {
       />
 
       <BarraInferior />
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      
     </View>
   );
 };
