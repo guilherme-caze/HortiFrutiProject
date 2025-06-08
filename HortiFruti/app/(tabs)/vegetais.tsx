@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+    marginTop: -35, //Arrumando o buraco
   },
   
 });

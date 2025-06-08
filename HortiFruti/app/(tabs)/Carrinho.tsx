@@ -66,7 +66,7 @@ export default function ModalScreen() {
   const itensSelecionados = carrinho.filter(item => item.selecionado).length;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingBottom: 45 }]}>
       <View style={styles.subtotalContainer}>
         <Text style={styles.title1}>Subtotal</Text>
         <Text style={styles.title2}>R$ {subtotal.toFixed(2)}</Text>
@@ -101,7 +101,6 @@ export default function ModalScreen() {
       />
 
       <BarraInferior />
-      
     </View>
   );
 };
@@ -167,5 +166,11 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 16,
       fontWeight: 'medium',
+    },
+    barra: {
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: 0, 
     },
 });
