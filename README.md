@@ -44,8 +44,6 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
 - Daniel Fernandes Beserra
 - Guilherme Rodrigues Cazé
 - Mateus Cerqueira Gonzaga
-- Leandro de Souza Farias
-- Ademar Neto Seabra Fonseca 
 
 ## 📌 Como Executar o Projeto
 
@@ -53,7 +51,7 @@ Desenvolver uma solução mobile intuitiva que permita ao usuário visualizar, s
    ```bash
    git clone https://github.com/seu-usuario/HortiFruti.git
    cd HortiFruti
-   npm install
+   npm install --legacy-peer-deps
    npx expo start
 
 ## ⛔ Dependências a serem instaladas
